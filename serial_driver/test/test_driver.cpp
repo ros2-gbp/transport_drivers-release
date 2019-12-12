@@ -1,10 +1,11 @@
 // Copyright 2018 Apex.AI, Inc.
+// Co-developed by Tier IV, Inc. and Apex.AI, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//     http://www.apache.org/licenses/LICENSE-2.0
+//     http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,24 +13,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Co-developed by Tier IV, Inc. and Apex.AI, Inc.
-
 #include "test_driver.hpp"
 
-#include <string>
-
-namespace test_udp_driver
+namespace test_serial_driver
 {
-Packet::Packet(int val)
-: value(val) {}
-Packet::Packet()
-: value(0) {}
+    Packet::Packet(int32_t val): value(val) {}
+    Packet::Packet(): value(0) {}
 
 TestDriver::TestDriver(
   const std::string & node_name,
   const std::string & topic,
-  const UdpConfig & udp_config)
-: TestDriverT(node_name, topic, udp_config),
+  const std::string & device_name,
+  const SerialPortConfig & serial_port_config)
+: TestDriverT(node_name, topic, device_name, serial_port_config),
   m_last_value(-1),
   m_times_init_output_has_been_called(0)
 {
@@ -61,4 +57,4 @@ bool TestDriver::get_output_remainder(std_msgs::msg::Int32 & output)
   (void)output;
   return false;
 }
-}  // namespace test_udp_driver
+}  // namespace test_serial_driver
