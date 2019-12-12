@@ -1,0 +1,26 @@
+ros-dashing-udp-driver (0.0.4-1bionic) bionic; urgency=high
+
+  * Added UdpConfig class to encapsulate configuration options
+  * Removed workaround for ROS 2 Dashing PR2
+  * Contributors: Esteve Fernandez
+
+ -- Apex.AI, Inc. <opensource@apex.ai>  Thu, 12 Dec 2019 06:00:00 -0000
+
+ros-dashing-udp-driver (0.0.3-1bionic) bionic; urgency=high
+
+  * Merge pull request #2 <https://github.com/ros-drivers/transport_drivers/issues/2> from esteve/fix-dependencies
+    Added ament_lint_auto dependency
+  * Added ament_lint_auto dependency
+  * Contributors: Esteve Fernandez
+
+ -- Apex.AI, Inc. <opensource@apex.ai>  Wed, 21 Aug 2019 05:00:00 -0000
+
+ros-dashing-udp-driver (0.0.2-1bionic) bionic; urgency=high
+
+  * Bump version
+  * Initial checkin
+  * Contributors: Esteve Fernandez
+
+ -- Apex.AI, Inc. <opensource@apex.ai>  Mon, 19 Aug 2019 05:00:00 -0000
+
+
