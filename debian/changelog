@@ -1,0 +1,21 @@
+ros-dashing-serial-driver (0.0.4-2bionic) bionic; urgency=high
+
+  * Making serial_driver version number consistent with repo.
+  * Initial commit of serial_driver.
+  * Contributors: Joshua Whitley
+
+ -- Apex.AI, Inc. <opensource@apex.ai>  Thu, 12 Dec 2019 06:00:00 -0000
+
+ros-dashing-serial-driver (0.0.3-2bionic) bionic; urgency=high
+
+
+
+ -- Apex.AI, Inc. <opensource@apex.ai>  Wed, 21 Aug 2019 05:00:00 -0000
+
+ros-dashing-serial-driver (0.0.2-2bionic) bionic; urgency=high
+
+
+
+ -- Apex.AI, Inc. <opensource@apex.ai>  Mon, 19 Aug 2019 05:00:00 -0000
+
+
