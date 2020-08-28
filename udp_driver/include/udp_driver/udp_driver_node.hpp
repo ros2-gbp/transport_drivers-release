@@ -25,7 +25,6 @@
 #include "boost/asio.hpp"
 #include "boost/array.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "rclcpp_lifecycle/lifecycle_node.hpp"
 
 namespace autoware
 {
@@ -39,7 +38,7 @@ namespace udp_driver
 /// \tparam PacketT The type of the packet buffer. Typically a container
 /// \tparam OutputT The type a packet gets converted/deserialized into. Should be a ROS 2 message
 template<typename PacketT, typename OutputT>
-class UdpDriverNode : public rclcpp_lifecycle::LifecycleNode
+class UdpDriverNode : public rclcpp::Node
 {
 public:
   class UdpConfig
@@ -73,7 +72,7 @@ private:
     const std::string & node_name,
     const std::string & topic,
     const UdpConfig & udp_config)
-  : LifecycleNode(node_name),
+  : Node(node_name),
     m_pub_ptr(this->create_publisher<OutputT>(topic, rclcpp::QoS(10))),
     m_io_service(),
     m_udp_socket(m_io_service,
@@ -86,12 +85,13 @@ private:
   UdpDriverNode(
     const std::string & node_name,
     const std::string & node_namespace)
-  : LifecycleNode(
+  : Node(
       node_name,
       node_namespace),
     m_pub_ptr(
-      LifecycleNode::create_publisher<OutputT>(declare_parameter("topic").get<std::string>(),
-      rclcpp::QoS(10))),
+      Node::create_publisher<OutputT>(
+        declare_parameter("topic").get<std::string>(),
+        rclcpp::QoS(10))),
     m_io_service(),
     m_udp_socket(m_io_service, boost::asio::ip::udp::endpoint(
         boost::asio::ip::address::from_string(declare_parameter("ip").get<std::string>()),
@@ -104,8 +104,6 @@ private:
     // initialize the output object
     OutputT output;
     init_output(output);
-    // activate the publisher
-    m_pub_ptr->on_activate();
 
     uint32_t iter = 0U;
     // workaround for rclcpp logging macros with template class
@@ -164,8 +162,9 @@ private:
     boost::system::error_code udp_error;
     boost::asio::ip::udp::endpoint sender_endpoint;
     constexpr size_t max_data_size = 64 * 1024;
-    const size_t len = socket.receive_from(boost::asio::buffer(&pkt, max_data_size),
-        sender_endpoint, 0, udp_error);
+    const size_t len = socket.receive_from(
+      boost::asio::buffer(&pkt, max_data_size),
+      sender_endpoint, 0, udp_error);
 
     if (udp_error && udp_error != boost::asio::error::message_size) {
       throw boost::system::system_error(udp_error);
@@ -174,7 +173,7 @@ private:
     return len;
   }
 
-  const std::shared_ptr<typename rclcpp_lifecycle::LifecyclePublisher<OutputT>> m_pub_ptr;
+  const std::shared_ptr<typename rclcpp::Publisher<OutputT>> m_pub_ptr;
   boost::asio::io_service m_io_service;
   boost::asio::ip::udp::socket m_udp_socket;
 };  // class UdpDriverNode
