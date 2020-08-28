@@ -27,7 +27,6 @@
 #include "boost/asio.hpp"
 #include "boost/array.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "rclcpp_lifecycle/lifecycle_node.hpp"
 
 namespace autoware
 {
@@ -85,7 +84,7 @@ protected:
 /// \tparam PacketT The type of the packet buffer. Typically a container
 /// \tparam OutputT The type a packet gets converted/deserialized into. Should be a ROS 2 message
 template<typename Derived, typename PacketT, typename OutputT>
-class SerialDriverNode : public rclcpp_lifecycle::LifecycleNode,
+class SerialDriverNode : public rclcpp::Node,
   public crtp<Derived>
 {
 public:
@@ -148,12 +147,13 @@ private:
     const std::string & device_name,
     const SerialPortConfig & serial_port_config,
     size_t history_depth = 10)
-  : LifecycleNode(node_name),
+  : Node(node_name),
     m_pub_ptr(this->create_publisher<OutputT>(topic, rclcpp::QoS(history_depth))),
     m_io_service(),
     m_serial_port(m_io_service)
   {
-    init_port(device_name, serial_port_config.get_baud_rate(),
+    init_port(
+      device_name, serial_port_config.get_baud_rate(),
       serial_port_config.get_flow_control(),
       serial_port_config.get_parity(), serial_port_config.get_stop_bits());
   }
@@ -166,12 +166,13 @@ private:
     const std::string & node_name,
     const std::string & node_namespace,
     size_t history_depth = 10)
-  : LifecycleNode(
+  : Node(
       node_name,
       node_namespace),
     m_pub_ptr(
-      LifecycleNode::create_publisher<OutputT>(declare_parameter("topic").get<std::string>(),
-      rclcpp::QoS(history_depth))),
+      Node::create_publisher<OutputT>(
+        declare_parameter("topic").get<std::string>(),
+        rclcpp::QoS(history_depth))),
     m_io_service(),
     m_serial_port(m_io_service)
   {
@@ -226,8 +227,6 @@ private:
     // initialize the output object
     OutputT output;
     this->impl().init_output(output);
-    // activate the publisher
-    m_pub_ptr->on_activate();
 
     uint32_t iter = 0U;
     // workaround for rclcpp logging macros with template class
@@ -266,9 +265,11 @@ private:
   {
     boost::system::error_code serial_error;
     constexpr size_t max_data_size = 64 * 1024;
-    const size_t len = boost::asio::read(port, boost::asio::buffer(&pkt,
+    const size_t len = boost::asio::read(
+      port, boost::asio::buffer(
+        &pkt,
         max_data_size), boost::asio::transfer_exactly(sizeof(pkt)),
-        serial_error);
+      serial_error);
 
     if (serial_error && serial_error != boost::asio::error::message_size) {
       throw boost::system::system_error(serial_error);
@@ -344,7 +345,7 @@ private:
     }
   }
 
-  const std::shared_ptr<typename rclcpp_lifecycle::LifecyclePublisher<OutputT>> m_pub_ptr;
+  const std::shared_ptr<typename rclcpp::Publisher<OutputT>> m_pub_ptr;
   boost::asio::io_service m_io_service;
   boost::asio::serial_port m_serial_port;
 };  // class SerialDriverNode
