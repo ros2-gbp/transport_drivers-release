@@ -1,3 +1,28 @@
+## transport_drivers (dashing) - 0.0.6-4
+
+The packages in the `transport_drivers` repository were released into the `dashing` distro by running `/usr/bin/bloom-release --ros-distro dashing --track dashing transport_drivers` on `Thu, 03 Dec 2020 21:44:29 -0000`
+
+These packages were released:
+- `serial_driver`
+- `udp_driver`
+
+Version of package(s) in repository `transport_drivers`:
+
+- upstream repository: https://github.com/ros-drivers/transport_drivers.git
+- release repository: https://github.com/ros-drivers-gbp/transport_drivers-release.git
+- rosdistro version: `0.0.5-1`
+- old version: `0.0.6-3`
+- new version: `0.0.6-4`
+
+Versions of tools used:
+
+- bloom version: `0.10.0`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.20.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## transport_drivers (dashing) - 0.0.6-3
 
 The packages in the `transport_drivers` repository were released into the `dashing` distro by running `/usr/bin/bloom-release --ros-distro dashing --track dashing transport_drivers --edit-track` on `Fri, 28 Aug 2020 02:02:32 -0000`
