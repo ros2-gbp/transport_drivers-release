@@ -1,5 +1,4 @@
-# Copyright 2021 Apex.AI, Inc.
-#
+# Copyright 2021 TierIV, Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,9 +10,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-# Co-developed by Tier IV, Inc. and Apex.AI, Inc.
 
-find_package(asio_cmake_module REQUIRED)
-find_package(ASIO REQUIRED)
-list(APPEND udp_driver_INCLUDE_DIRS ${ASIO_INCLUDE_DIRS})
+cmake_minimum_required(VERSION 3.5)
+
+project(asio_cmake_module)
+
+find_package(ament_cmake REQUIRED)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package(
+  CONFIG_EXTRAS "asio_cmake_module-extras.cmake"
+)
+
+install(DIRECTORY cmake
+  DESTINATION share/${PROJECT_NAME})
