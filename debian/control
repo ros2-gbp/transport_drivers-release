@@ -1,0 +1,12 @@
+Source: ros-foxy-io-context
+Section: misc
+Priority: optional
+Maintainer: Joshua Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libasio-dev, ros-foxy-ament-cmake-auto, ros-foxy-ament-cmake-gtest, ros-foxy-ament-lint-auto, ros-foxy-ament-lint-common, ros-foxy-asio-cmake-module, ros-foxy-example-interfaces, ros-foxy-rclcpp, ros-foxy-std-msgs, ros-foxy-udp-msgs, ros-foxy-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-foxy-io-context
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libasio-dev, ros-foxy-example-interfaces, ros-foxy-rclcpp, ros-foxy-std-msgs, ros-foxy-udp-msgs, ros-foxy-ros-workspace
+Description: A library to write Synchronous and Asynchronous networking applications
