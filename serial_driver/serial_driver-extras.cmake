@@ -1,4 +1,4 @@
-# Copyright 2018 Apex.AI, Inc.
+# Copyright 2021 Apex.AI, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,6 +14,6 @@
 #
 # Co-developed by Tier IV, Inc. and Apex.AI, Inc.
 
-find_package(Boost REQUIRED COMPONENTS system)
-list(APPEND serial_driver_LIBRARIES ${Boost_LIBRARIES})
-list(APPEND serial_driver_INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
+find_package(asio_cmake_module REQUIRED)
+find_package(ASIO REQUIRED)
+list(APPEND serial_driver_INCLUDE_DIRS ${ASIO_INCLUDE_DIRS})
