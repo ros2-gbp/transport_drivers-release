@@ -1,4 +1,4 @@
-// Copyright 2018 Apex.AI, Inc.
+// Copyright 2021 LeoDrive.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "gtest/gtest.h"
-#include "udp_driver/udp_driver_node.hpp"
+// Developed by LeoDrive, 2021
 
-int main(int argc, char * argv[])
-{
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+#ifndef MSG_CONVERTERS__CONVERTERS_HPP_
+#define MSG_CONVERTERS__CONVERTERS_HPP_
+
+#include "example_interfaces.hpp"
+#include "std_msgs.hpp"
+#include "udp_msgs.hpp"
+
+#endif  // MSG_CONVERTERS__CONVERTERS_HPP_
