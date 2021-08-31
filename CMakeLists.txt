@@ -14,38 +14,73 @@
 #
 # Co-developed by Tier IV, Inc. and Apex.AI, Inc.
 cmake_minimum_required(VERSION 3.5)
-
 project(serial_driver)
+
+# Default to C++14
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
 ## dependencies
 find_package(ament_cmake_auto REQUIRED)
-find_package(Boost REQUIRED COMPONENTS system)
-
 ament_auto_find_build_dependencies()
 
-include_directories(include ${Boost_INCLUDE_DIRS})
-link_directories(${Boost_LIBRARY_DIRS})
+find_package(asio_cmake_module REQUIRED)
+find_package(ASIO REQUIRED)
+
+ament_auto_add_library(${PROJECT_NAME} SHARED
+  src/serial_port.cpp
+  src/serial_driver.cpp
+)
+
+ament_target_dependencies(${PROJECT_NAME} "ASIO")
+
+ament_auto_add_library(${PROJECT_NAME}_nodes SHARED
+  src/serial_bridge_node.cpp
+)
+
+rclcpp_components_register_node(${PROJECT_NAME}_nodes
+  PLUGIN "drivers::serial_driver::SerialBridgeNode"
+  EXECUTABLE "serial_bridge"
+)
+
+target_link_libraries(${PROJECT_NAME}_nodes ${PROJECT_NAME})
+ament_target_dependencies(${PROJECT_NAME}_nodes "ASIO")
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto)
   ament_lint_auto_find_test_dependencies()
 
-  set(TEST_LIB "${PROJECT_NAME}_test")
-  add_library(${TEST_LIB} SHARED test/test_driver.hpp test/test_driver.cpp)
-  ament_target_dependencies(${TEST_LIB} "rclcpp" "std_msgs")
-  target_include_directories(${TEST_LIB} PRIVATE include)
-  target_link_libraries(${TEST_LIB} ${Boost_LIBRARIES})
+  set(TEST_FILES
+    test/test_serial_driver.cpp
+    test/test_serial_port.cpp
+  )
 
-  # Unit tests
-  set(TEST_SERIAL_DRIVER_EXE test_serial_driver)
-  ament_add_gtest(${TEST_SERIAL_DRIVER_EXE}
-    test/gtest_main.cpp
-    test/test_serial_driver.cpp)
-  ament_target_dependencies(${TEST_SERIAL_DRIVER_EXE}  "Boost")
-  target_include_directories(${TEST_SERIAL_DRIVER_EXE} PRIVATE include)
-  target_link_libraries(${TEST_SERIAL_DRIVER_EXE} ${TEST_LIB} util)
+  foreach(file ${TEST_FILES})
+    get_filename_component(name "${file}" NAME_WE)
+    set(TEST_SERIAL_DRIVER_EXE ${name})
+
+    ament_add_gtest(${TEST_SERIAL_DRIVER_EXE}
+      test/${name}.cpp
+    )
+    ament_target_dependencies(${TEST_SERIAL_DRIVER_EXE}
+      rclcpp
+      example_interfaces
+      lifecycle_msgs
+      ASIO
+    )
+    target_include_directories(${TEST_SERIAL_DRIVER_EXE} PRIVATE include)
+    target_link_libraries(${TEST_SERIAL_DRIVER_EXE} ${PROJECT_NAME} ${PROJECT_NAME_NODES})
+  endforeach()
 endif()
 
 ament_auto_package(
   CONFIG_EXTRAS_POST "serial_driver-extras.cmake"
+  INSTALL_TO_SHARE
+    launch
+    params
 )
