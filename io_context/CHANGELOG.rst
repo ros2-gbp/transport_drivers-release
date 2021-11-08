@@ -2,8 +2,12 @@
 Changelog for package io_context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.0.0 (2021-08-30)
+1.0.1 (2021-08-30)
 ------------------
+* Serial driver debugs (`#56 <https://github.com/ros-drivers/transport_drivers/issues/56>`_)
+  * debugged message conversion
+  debugged serial bridge segfault (publisher accessed before initialized)
+  * refactored message conversion
 * update READMEs for each package (`#54 <https://github.com/ros-drivers/transport_drivers/issues/54>`_)
   * update READMEs for each package
   * add more to readme, renamed config to params
@@ -63,7 +67,7 @@ Changelog for package io_context
   * Remove unused include_directories
   * Apply reviewer feedback
 * move io_context to shared lib (`#36 <https://github.com/ros-drivers/transport_drivers/issues/36>`_)
-* Contributors: Esteve Fernandez, Evan Flynn, Joshua Whitley
+* Contributors: Esteve Fernandez, Evan Flynn, Haoru Xue, Joshua Whitley
 
 0.0.6 (2020-08-27)
 ------------------

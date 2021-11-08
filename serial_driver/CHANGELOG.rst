@@ -2,8 +2,13 @@
 Changelog for package serial_driver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.0.0 (2021-08-30)
+1.0.1 (2021-08-30)
 ------------------
+* Remove deprecated api from galactic (`#57 <https://github.com/ros-drivers/transport_drivers/issues/57>`_)
+* Serial driver debugs (`#56 <https://github.com/ros-drivers/transport_drivers/issues/56>`_)
+  * debugged message conversion
+  debugged serial bridge segfault (publisher accessed before initialized)
+  * refactored message conversion
 * update READMEs for each package (`#54 <https://github.com/ros-drivers/transport_drivers/issues/54>`_)
   * update READMEs for each package
   * add more to readme, renamed config to params
@@ -49,7 +54,7 @@ Changelog for package serial_driver
 * Make Nodes Component-Compatible (`#22 <https://github.com/ros-drivers/transport_drivers/issues/22>`_)
   * Making constructors for SerialDriverNode component-compatible.
   * Making constructors for UdpDriverNode component-compatible.
-* Contributors: Esteve Fernandez, Evan Flynn, Joshua Whitley
+* Contributors: Daisuke Nishimatsu, Esteve Fernandez, Evan Flynn, Haoru Xue, Joshua Whitley
 
 0.0.6 (2020-08-27)
 ------------------
