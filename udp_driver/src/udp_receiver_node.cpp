@@ -55,6 +55,9 @@ LNI::CallbackReturn UdpReceiverNode::on_configure(const lc::State & state)
 {
   (void)state;
 
+  m_publisher = this->create_publisher<udp_msgs::msg::UdpPacket>(
+    "udp_read", rclcpp::QoS(100));
+
   try {
     m_udp_driver->init_receiver(m_ip, m_port);
     m_udp_driver->receiver()->open();
@@ -67,9 +70,6 @@ LNI::CallbackReturn UdpReceiverNode::on_configure(const lc::State & state)
       m_ip.c_str(), m_port, ex.what());
     return LNI::CallbackReturn::FAILURE;
   }
-
-  m_publisher = this->create_publisher<udp_msgs::msg::UdpPacket>(
-    "udp_read", rclcpp::QoS(100));
 
   RCLCPP_DEBUG(get_logger(), "UDP receiver successfully configured.");
 
@@ -111,14 +111,14 @@ LNI::CallbackReturn UdpReceiverNode::on_shutdown(const lc::State & state)
 void UdpReceiverNode::get_params()
 {
   try {
-    m_ip = declare_parameter<std::string>("ip");
+    m_ip = declare_parameter<std::string>("ip", "");
   } catch (rclcpp::ParameterTypeException & ex) {
     RCLCPP_ERROR(get_logger(), "The ip paramter provided was invalid");
     throw ex;
   }
 
   try {
-    m_port = declare_parameter<int>("port");
+    m_port = declare_parameter<int>("port", 0);
   } catch (rclcpp::ParameterTypeException & ex) {
     RCLCPP_ERROR(get_logger(), "The port paramter provided was invalid");
     throw ex;
