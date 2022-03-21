@@ -1,3 +1,30 @@
+## transport_drivers (galactic) - 1.1.0-1
+
+The packages in the `transport_drivers` repository were released into the `galactic` distro by running `/usr/bin/bloom-release --ros-distro galactic --track galactic transport_drivers` on `Mon, 21 Mar 2022 03:16:12 -0000`
+
+These packages were released:
+- `asio_cmake_module`
+- `io_context`
+- `serial_driver`
+- `udp_driver`
+
+Version of package(s) in repository `transport_drivers`:
+
+- upstream repository: https://github.com/ros-drivers/transport_drivers.git
+- release repository: https://github.com/ros2-gbp/transport_drivers-release.git
+- rosdistro version: `1.0.1-1`
+- old version: `1.0.1-1`
+- new version: `1.1.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.24`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## transport_drivers (rolling) - 1.0.1-1
 
 The packages in the `transport_drivers` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --ros-distro rolling --track rolling transport_drivers --edit` on `Mon, 08 Nov 2021 16:12:56 -0000`
