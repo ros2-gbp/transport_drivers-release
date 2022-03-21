@@ -15,6 +15,7 @@
 // Developed by LeoDrive, 2021
 #include <gtest/gtest.h>
 
+#include <thread>
 #include <vector>
 
 #include "udp_driver/udp_socket.hpp"
@@ -39,10 +40,10 @@ TEST(UdpDataTest, LifeCycleTest)
   UdpSocket sender(ctx, ip, port);
   UdpSocket receiver(ctx, ip, port);
 
-  EXPECT_EQ(sender.ip(), ip);
-  EXPECT_EQ(sender.port(), port);
-  EXPECT_EQ(receiver.ip(), ip);
-  EXPECT_EQ(receiver.port(), port);
+  EXPECT_EQ(sender.remote_ip(), ip);
+  EXPECT_EQ(sender.remote_port(), port);
+  EXPECT_EQ(receiver.remote_ip(), ip);
+  EXPECT_EQ(receiver.remote_port(), port);
 
   EXPECT_EQ(sender.isOpen(), false);
   sender.open();
