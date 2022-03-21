@@ -1,4 +1,5 @@
 // Copyright 2021 LeoDrive, Copyright 2021 The Autoware Foundation
+// Copyright 2021 Trimble (c)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -73,6 +74,16 @@ void SerialPort::async_receive(Functor func)
     });
 }
 
+bool SerialPort::send_break()
+{
+  bool break_sent = false;
+  if (is_open()) {
+    m_serial_port.send_break();
+    break_sent = true;
+  }
+  return break_sent;
+}
+
 void SerialPort::async_send_handler(
   const asio::error_code & error,
   size_t bytes_transferred)
@@ -94,7 +105,7 @@ void SerialPort::async_receive_handler(
   }
 
   if (bytes_transferred > 0 && m_func) {
-    m_func(m_recv_buffer);
+    m_func(m_recv_buffer, bytes_transferred);
     m_serial_port.async_read_some(
       asio::buffer(m_recv_buffer),
       [this](std::error_code error, size_t bytes_transferred)
