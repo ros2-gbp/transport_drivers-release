@@ -2,6 +2,11 @@
 Changelog for package udp_driver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.1 (2022-03-20)
+------------------
+* Fix linter errors for galactic.
+* Contributors: WhitleySoftwareServices
+
 1.1.0 (2022-03-20)
 ------------------
 * Add missing header.
