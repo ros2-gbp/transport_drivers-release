@@ -1,0 +1,12 @@
+Source: ros-galactic-serial-driver
+Section: misc
+Priority: optional
+Maintainer: Joshua Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libasio-dev, ros-galactic-ament-cmake-auto, ros-galactic-ament-cmake-gtest, ros-galactic-ament-lint-auto, ros-galactic-ament-lint-common, ros-galactic-asio-cmake-module, ros-galactic-io-context, ros-galactic-rclcpp, ros-galactic-rclcpp-components, ros-galactic-rclcpp-lifecycle, ros-galactic-std-msgs, ros-galactic-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-serial-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libasio-dev, ros-galactic-io-context, ros-galactic-rclcpp, ros-galactic-rclcpp-components, ros-galactic-rclcpp-lifecycle, ros-galactic-std-msgs, ros-galactic-ros-workspace
+Description: A template class and associated utilities which encapsulate basic reading from serial ports
