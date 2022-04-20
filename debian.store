@@ -1,1 +1,1 @@
-{"base": "5ef4991", "parent": "debian/rolling/asio_cmake_module", "previous": "0ed2f3c", "trim": "", "trimbase": ""}
+{"base": "707830f", "parent": "debian/humble/asio_cmake_module", "previous": "38e4c5c", "trim": "", "trimbase": ""}
