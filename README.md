@@ -1,3 +1,30 @@
+## transport_drivers (humble) - 1.2.0-3
+
+The packages in the `transport_drivers` repository were released into the `humble` distro by running `/usr/bin/bloom-release --ros-distro humble --track humble transport_drivers --edit --override-release-repository-url https://github.com/ros2-gbp/transport_drivers-release.git --override-release-repository-push-url git@github.com:ros2-gbp/transport_drivers-release.git` on `Mon, 30 Jan 2023 21:48:31 -0000`
+
+These packages were released:
+- `asio_cmake_module`
+- `io_context`
+- `serial_driver`
+- `udp_driver`
+
+Version of package(s) in repository `transport_drivers`:
+
+- upstream repository: https://github.com/ros-drivers/transport_drivers.git
+- release repository: https://github.com/ros2-gbp/transport_drivers-release.git
+- rosdistro version: `1.2.0-2`
+- old version: `1.2.0-2`
+- new version: `1.2.0-3`
+
+Versions of tools used:
+
+- bloom version: `0.11.2`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.22.1`
+- rosdistro version: `0.9.0`
+- vcstools version: `0.1.42`
+
+
 ## transport_drivers (rolling) - 1.2.0-1
 
 The packages in the `transport_drivers` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --ros-distro rolling --track rolling --override-release-repository-url https://github.com/ros2-gbp/transport_drivers-release.git --override-release-repository-push-url git@github.com:ros2-gbp/transport_drivers-release.git transport_drivers` on `Mon, 21 Mar 2022 04:31:39 -0000`
