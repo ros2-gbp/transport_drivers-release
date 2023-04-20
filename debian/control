@@ -1,0 +1,12 @@
+Source: ros-iron-udp-driver
+Section: misc
+Priority: optional
+Maintainer: Joshua Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libasio-dev, ros-iron-ament-cmake-auto, ros-iron-ament-cmake-gtest <!nocheck>, ros-iron-ament-lint-auto <!nocheck>, ros-iron-ament-lint-common <!nocheck>, ros-iron-asio-cmake-module, ros-iron-io-context, ros-iron-lifecycle-msgs, ros-iron-rclcpp, ros-iron-rclcpp-components, ros-iron-rclcpp-lifecycle, ros-iron-std-msgs, ros-iron-udp-msgs, ros-iron-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-iron-udp-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libasio-dev, ros-iron-io-context, ros-iron-lifecycle-msgs, ros-iron-rclcpp, ros-iron-rclcpp-components, ros-iron-rclcpp-lifecycle, ros-iron-std-msgs, ros-iron-udp-msgs, ros-iron-ros-workspace
+Description: A library to write Synchronous and Asynchronous networking applications, ROS and ROS2 nodes
