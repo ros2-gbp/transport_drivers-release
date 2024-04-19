@@ -1,0 +1,12 @@
+Source: ros-jazzy-serial-driver
+Section: misc
+Priority: optional
+Maintainer: Joshua Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ament-cmake, ament-cmake-copyright <!nocheck>, ament-cmake-cppcheck <!nocheck>, ament-cmake-cpplint <!nocheck>, ament-cmake-flake8 <!nocheck>, ament-cmake-googletest <!nocheck>, ament-cmake-lint-cmake <!nocheck>, ament-cmake-pep257 <!nocheck>, ament-cmake-uncrustify <!nocheck>, ament-cmake-xmllint <!nocheck>, ament-lint <!nocheck>, libasio-dev, libstd-msgs-dev, python3-std-msgs, ros-jazzy-asio-cmake-module, ros-jazzy-io-context, ros-jazzy-rclcpp, ros-jazzy-rclcpp-components, ros-jazzy-rclcpp-lifecycle, ros-std-msgs, ros-jazzy-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-serial-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libasio-dev, libstd-msgs-dev, python3-std-msgs, ros-jazzy-io-context, ros-jazzy-rclcpp, ros-jazzy-rclcpp-components, ros-jazzy-rclcpp-lifecycle, ros-std-msgs, ros-jazzy-ros-workspace
+Description: A template class and associated utilities which encapsulate basic reading from serial ports
