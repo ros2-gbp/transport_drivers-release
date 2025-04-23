@@ -1,0 +1,12 @@
+Source: ros-kilted-udp-driver
+Section: misc
+Priority: optional
+Maintainer: Joshua Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libasio-dev, ros-kilted-ament-cmake-auto, ros-kilted-ament-cmake-gtest <!nocheck>, ros-kilted-ament-lint-auto <!nocheck>, ros-kilted-ament-lint-common <!nocheck>, ros-kilted-asio-cmake-module, ros-kilted-io-context, ros-kilted-lifecycle-msgs, ros-kilted-rclcpp, ros-kilted-rclcpp-components, ros-kilted-rclcpp-lifecycle, ros-kilted-std-msgs, ros-kilted-udp-msgs, ros-kilted-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-udp-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libasio-dev, ros-kilted-io-context, ros-kilted-lifecycle-msgs, ros-kilted-rclcpp, ros-kilted-rclcpp-components, ros-kilted-rclcpp-lifecycle, ros-kilted-std-msgs, ros-kilted-udp-msgs, ros-kilted-ros-workspace
+Description: A library to write Synchronous and Asynchronous networking applications, ROS and ROS2 nodes
