@@ -1,0 +1,12 @@
+Source: ros-kilted-io-context
+Section: misc
+Priority: optional
+Maintainer: Joshua Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libasio-dev, ros-kilted-ament-cmake-auto, ros-kilted-ament-cmake-gtest <!nocheck>, ros-kilted-ament-lint-auto <!nocheck>, ros-kilted-ament-lint-common <!nocheck>, ros-kilted-asio-cmake-module, ros-kilted-rclcpp, ros-kilted-std-msgs, ros-kilted-udp-msgs, ros-kilted-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-io-context
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libasio-dev, ros-kilted-rclcpp, ros-kilted-std-msgs, ros-kilted-udp-msgs, ros-kilted-ros-workspace
+Description: A library to write Synchronous and Asynchronous networking applications
