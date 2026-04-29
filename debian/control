@@ -1,0 +1,12 @@
+Source: ros-lyrical-io-context
+Section: misc
+Priority: optional
+Maintainer: Joshua Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libasio-dev, ros-lyrical-ament-cmake-auto, ros-lyrical-ament-cmake-gtest <!nocheck>, ros-lyrical-ament-lint-auto <!nocheck>, ros-lyrical-ament-lint-common <!nocheck>, ros-lyrical-asio-cmake-module, ros-lyrical-rclcpp, ros-lyrical-std-msgs, ros-lyrical-udp-msgs, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/io_context/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-io-context
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libasio-dev, ros-lyrical-rclcpp, ros-lyrical-std-msgs, ros-lyrical-udp-msgs, ros-lyrical-ros-workspace
+Description: A library to write Synchronous and Asynchronous networking applications
