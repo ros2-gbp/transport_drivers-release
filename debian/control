@@ -1,0 +1,12 @@
+Source: ros-lyrical-serial-driver
+Section: misc
+Priority: optional
+Maintainer: Joshua Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libasio-dev, ros-lyrical-ament-cmake-auto, ros-lyrical-ament-cmake-gtest <!nocheck>, ros-lyrical-ament-lint-auto <!nocheck>, ros-lyrical-ament-lint-common <!nocheck>, ros-lyrical-asio-cmake-module, ros-lyrical-io-context, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-rclcpp-lifecycle, ros-lyrical-std-msgs, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/serial_driver/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-serial-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libasio-dev, ros-lyrical-io-context, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-rclcpp-lifecycle, ros-lyrical-std-msgs, ros-lyrical-ros-workspace
+Description: A template class and associated utilities which encapsulate basic reading from serial ports
