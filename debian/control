@@ -1,0 +1,12 @@
+Source: ros-lyrical-udp-driver
+Section: misc
+Priority: optional
+Maintainer: Joshua Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libasio-dev, ros-lyrical-ament-cmake-auto, ros-lyrical-ament-cmake-gtest <!nocheck>, ros-lyrical-ament-lint-auto <!nocheck>, ros-lyrical-ament-lint-common <!nocheck>, ros-lyrical-asio-cmake-module, ros-lyrical-io-context, ros-lyrical-lifecycle-msgs, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-rclcpp-lifecycle, ros-lyrical-std-msgs, ros-lyrical-udp-msgs, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/udp_driver/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-udp-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libasio-dev, ros-lyrical-io-context, ros-lyrical-lifecycle-msgs, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-rclcpp-lifecycle, ros-lyrical-std-msgs, ros-lyrical-udp-msgs, ros-lyrical-ros-workspace
+Description: A library to write Synchronous and Asynchronous networking applications, ROS and ROS2 nodes
